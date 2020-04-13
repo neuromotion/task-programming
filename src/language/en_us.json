@@ -1,0 +1,32 @@
+{
+  "task": {
+    "name": "Programming Task",
+    "end": "This task has ended."
+  },
+  "prompt": {
+    "press": "Press any key to continue.",
+    "continue": "Continue",
+    "start": "Start",
+    "stop": "Stop",
+    "focus": "Make sure the photodiode is aligned and the EEG recording has begun before continuing.",
+    "fullscreen": "Press 'cmd + ctrl + F' to toggle Fullscreen.",
+    "zoom": "Zoom in to enlarge the screen.",
+    "heading": {
+      "open_task": "Setting up task...",
+      "start": "Starting",
+      "stop": "Stopping"
+    }
+  },
+  "userid": {
+    "set": "Please enter subject ID."
+  },
+  "eventMarker" : {
+    "found": "Hold the USB event marker in front of the camera.",
+    "not_found": "Note: no USB event marker found."
+  },
+  "instructions": {
+    "adjust_volume": "Set tablet volume to 50/100.",
+    "start": "Press start when you are ready to begin.",
+    "stop": "Press stop when the task is over. Then stop all recordings."
+  }
+}
