@@ -2,7 +2,8 @@ name: CI Tests
 
 on:
   push:
-    - master
+    branches:
+      - master
   pull_request:
     branches:
       - develop
