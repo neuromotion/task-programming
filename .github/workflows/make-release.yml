@@ -30,11 +30,12 @@ jobs:
     - name: npm install
       run: npm install
     - name: npm build
+      if: startsWith(matrix.os, 'windows')
+      run: npm run build:win:clinic
+    - name: npm build
+      if: startsWith(matrix.os, 'ubuntu')
       run: npm run build
-    - name: npm test
-      run: npm test
-      env:
-        CI: true
+
 
     # Build electron app package installers
     - name: package electron - windows
@@ -75,36 +76,3 @@ jobs:
         files: dist/installers/${{ steps.package_info.outputs.package_name }}-${{ steps.package_info.outputs.package_version }}.dmg
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
-    # Build PsiTurk - linux only
-    - name: Set up Python 3.7
-      if: startsWith(matrix.os, 'ubuntu')
-      uses: actions/setup-python@v1
-      with:
-        python-version: 3.7
-    - name: Install PsiTurk
-      if: startsWith(matrix.os, 'ubuntu')
-      run: pip install psiturk
-    - name: Create Psiturk Build
-      if: startsWith(matrix.os, 'ubuntu')
-      run: |
-        cd psiturkit
-        ./psiturk-it -p ${{ steps.package_info.outputs.package_name }}-psiturk
-        cd ..
-        tar -cvzf ${{ steps.package_info.outputs.package_name }}-psiturk.tar.gz psiturkit/${{ steps.package_info.outputs.package_name }}-psiturk
-    - name: Upload PsiTurk build to release
-      if: startsWith(matrix.os, 'ubuntu')
-      uses: softprops/action-gh-release@v1
-      with:
-        files: ${{ steps.package_info.outputs.package_name }}-psiturk.tar.gz
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
-    # Update github pages - linux only
-    - name: Deploy to GH Pages
-      if: startsWith(matrix.os, 'ubuntu')
-      uses: peaceiris/actions-gh-pages@v2
-      env:
-        ACTIONS_DEPLOY_KEY: ${{ secrets.ACTIONS_DEPLOY_KEY }}
-        PUBLISH_BRANCH: gh-pages
-        PUBLISH_DIR: ./build
