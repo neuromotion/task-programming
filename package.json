@@ -1,5 +1,5 @@
 {
-  "name": "programming",
+  "name": "programming-cbt",
   "description": "Programming Task",
   "author": {
     "name": "Brown CCV",
@@ -49,9 +49,8 @@
     "dev:home": "cross-env REACT_APP_AT_HOME=\"true\" npm run dev",
     "dev:clinic": "cross-env REACT_APP_AT_HOME=\"false\" npm run dev",
     "build:win:home": "cross-env REACT_APP_AT_HOME=\"true\" npm run build",
-    "build:win:clinic": "cross-env REACT_APP_AT_HOME=\"false\" npm run build",
-    "build:home": "cross-env REACT_APP_AT_HOME=\"true\" npm run build"
-  },
+    "build:win:clinic": "cross-env REACT_APP_AT_HOME=\"false\" npm run build"
+    },
   "eslintConfig": {
     "extends": "react-app"
   },

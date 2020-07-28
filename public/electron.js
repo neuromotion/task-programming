@@ -257,7 +257,7 @@ app.on('will-quit', () => {
 
   // copy file to config location
   const desktop = app.getPath('desktop')
-  const name = app.getName()
+  const name = (process.env.REACT_APP_AT_HOME) ? 'cbt' : 'programming'
   const today = new Date(Date.now())
   const date = today.toISOString().slice(0,10)
   const copyPath = path.join(desktop, dataDir, `${patientID}`, date, name)
