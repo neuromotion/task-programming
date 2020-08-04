@@ -44,6 +44,16 @@ function createWindow () {
         webSecurity: false
       }
     })
+  } else if (process.env.REACT_APP_AT_HOME) { 
+    mainWindow = new BrowserWindow({
+      fullscreen: true,
+      icon: './favicon.ico',
+      frame: true,
+      webPreferences: {
+        nodeIntegration: true,
+        webSecurity: true
+      }
+    })
   } else {
     mainWindow = new BrowserWindow({
       fullscreen: true,
