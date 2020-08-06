@@ -1,9 +1,6 @@
 name: CI Tests
 
 on:
-  push:
-    branches:
-      - main
   pull_request:
     branches:
       - develop
@@ -37,8 +34,6 @@ jobs:
     # install, test, build package
     - name: npm install
       run: npm install
-    - name: get git revision and branch
-      run: node version.js
     - name: npm build
       if: startsWith(matrix.os, 'windows')
       run: npm run build:win:clinic

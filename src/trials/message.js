@@ -1,10 +1,10 @@
-import { lang } from '../config/main'
 import { baseStimulus } from '../lib/markup/stimuli'
+import { lang } from '../config/main'
 
-const adjustVolume = () => {
+const message = (message) => {
     const stimulus = baseStimulus(`
     <div class='instructions'>
-    <h1>${lang.instructions.adjust_volume}</h1>
+    <h1>${message}</h1>
     </div>
     `, true)
     
@@ -16,4 +16,4 @@ const adjustVolume = () => {
     }
 }
 
-export default adjustVolume
+export default message

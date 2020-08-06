@@ -3,9 +3,16 @@ import { getUserId } from '../lib/utils'
 import { baseStimulus } from '../lib/markup/stimuli'
 
 const userId = () => {
+  const ipcRenderer = window.require('electron').ipcRenderer;
+  const envPatientId = ipcRenderer.sendSync('syncPatientId')
     return {
       type: 'survey_text',
-      questions: [{ prompt: baseStimulus(`<h1>${lang.userid.set}</h1>`, true), value: process.env.REACT_APP_PATIENT_ID }],
+      questions: [
+          { 
+            prompt: baseStimulus(`<h1>${lang.userid.set}</h1>`, true), 
+            value: envPatientId 
+          }
+        ],
       on_finish: (data) => {
         getUserId(data)
       }

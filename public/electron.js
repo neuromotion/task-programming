@@ -44,6 +44,16 @@ function createWindow () {
         webSecurity: false
       }
     })
+  } else if (process.env.REACT_APP_AT_HOME) { 
+    mainWindow = new BrowserWindow({
+      fullscreen: true,
+      icon: './favicon.ico',
+      frame: true,
+      webPreferences: {
+        nodeIntegration: true,
+        webSecurity: true
+      }
+    })
   } else {
     mainWindow = new BrowserWindow({
       fullscreen: true,
@@ -161,6 +171,11 @@ let startTrial = -1
 // Read version file (git sha and branch)
 var git = JSON.parse(fs.readFileSync(path.resolve(__dirname, 'config/version.json')));
 
+// Get Patient Id from environment
+ipc.on('syncPatientId', (event) => {
+  event.returnValue = process.env.REACT_APP_PATIENT_ID
+})
+
 // listener for new data
 ipc.on('data', (event, args) => {
 
@@ -257,7 +272,7 @@ app.on('will-quit', () => {
 
   // copy file to config location
   const desktop = app.getPath('desktop')
-  const name = app.getName()
+  const name = (process.env.REACT_APP_AT_HOME) ? 'cbt' : 'programming'
   const today = new Date(Date.now())
   const date = today.toISOString().slice(0,10)
   const copyPath = path.join(desktop, dataDir, `${patientID}`, date, name)

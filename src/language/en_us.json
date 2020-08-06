@@ -26,6 +26,7 @@
   },
   "instructions": {
     "adjust_volume": "Set tablet volume to 50/100.",
+    "make_sure": "Please place the CTM in your pocket. Make sure zoom recording and device recording has begun before pressing continue",
     "start": "Press start when you are ready to begin.",
     "stop": "Press stop when the task is over. Then stop all recordings."
   }
