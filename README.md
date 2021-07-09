@@ -1,3 +1,7 @@
+# ⚠️ Archived
+
+Moved to https://github.com/neuromotion/sync-task
+
 # Programming Task
 <p float="left">
   <img src="programming.svg" width="200" />
